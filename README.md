@@ -271,6 +271,6 @@ For questions or clarifications, contact Group 12 members.
 
 ---
 
-**Last Updated:** March 29, 2026  
+ 
 **Developed for:** Engineering Mathematics-4 Project  
 **Academic Year:** 2025-2026
