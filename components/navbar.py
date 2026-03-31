@@ -1,5 +1,5 @@
 """
-components/navbar.py - Advanced Navigation Bar Component
+components/navbar.py -AdvancedNavigatioBarComponent
 """
 
 import streamlit as st
