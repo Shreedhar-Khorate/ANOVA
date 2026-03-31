@@ -269,6 +269,10 @@ This project is part of the Engineering Mathematics-4 (EM-4) curriculum.
 
 For questions or clarifications, contact Group 12 members.
 
+**#Documentation**
+**Poster**:-https://drive.google.com/file/d/1t2wDwGo-spFrQCy6yo_FMtJtJuW212qs/view?usp=sharing
+**PPT**:-https://docs.google.com/presentation/d/1wwm41etn_306DEhZ4zcTS4tfaeC9AnX2/edit?usp=sharing&ouid=109532503902573124912&rtpof=true&sd=true
+
 ---
 
  
