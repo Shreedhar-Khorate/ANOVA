@@ -259,7 +259,7 @@ def show_about():
     st.markdown("---")
     st.markdown("""
     <div style='text-align: center; color: #999; font-size: 0.85rem;'>
-    <p>ANOVA Analysis Tool v1.0.0 | © 2026 Engineering Mathematics Project</p>
-    <p>Built with ❤️ using Streamlit | Open Source & Free to Use</p>
+    <p>@2026 ANOVA Analysis Tool</p>
+
     </div>
     """, unsafe_allow_html=True)

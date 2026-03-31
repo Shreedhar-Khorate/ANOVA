@@ -305,3 +305,11 @@ Total|{anova_table['ss_total']:.4f}|{anova_table['df_total']}|—|—|—
             )
         except Exception as e:
             st.error(f"Error generating text report: {str(e)}")
+    
+    # Footer always displayed
+    st.divider()
+    st.markdown("""
+    <div style='text-align: center; color: #999; font-size: 0.85rem;'>
+    <p>@2026 ANOVA Analysis Tool</p>
+    </div>
+    """, unsafe_allow_html=True)

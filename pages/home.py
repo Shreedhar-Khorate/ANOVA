@@ -157,3 +157,11 @@ def show_home():
             """, unsafe_allow_html=True)
     
     st.markdown('<div style="margin-top:2rem"></div>', unsafe_allow_html=True)
+    st.divider()
+    st.markdown("---")
+    
+    st.markdown("""
+            <div style='text-align: center; color: #999; font-size: 0.85rem;'>
+            <p>@2026 ANOVA Analysis Tool</p>
+            </div>
+            """, unsafe_allow_html=True)

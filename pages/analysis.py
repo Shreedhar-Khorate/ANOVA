@@ -118,3 +118,14 @@ def show_analysis():
             with col3:
                 significance = "Not Significant" if p_value >= alpha else "Significant"
                 st.metric("Result", significance)
+            
+            
+    
+    # Footer always displayed (moved outside if run_clicked block)
+    st.divider()
+    st.markdown("---")
+    st.markdown("""
+    <div style='text-align: center; color: #999; font-size: 0.85rem;'>
+    <p>@2026 ANOVA Analysis Tool</p>
+    </div>
+    """, unsafe_allow_html=True)
