@@ -25,35 +25,46 @@ def render_navbar():
         background: linear-gradient(135deg, {PRIMARY_COLOR} 0%, {PRIMARY_DARK} 100%);
         padding: 0;
         margin: 0;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
         backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }}
     
     .navbar-container {{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 12px clamp(1rem, 4vw, 2rem);
+        padding: 14px clamp(1rem, 4vw, 2.5rem);
         max-width: 100%;
-        gap: clamp(0.5rem, 2vw, 1rem);
+        gap: clamp(0.8rem, 2vw, 1.5rem);
+        transition: all 0.3s ease;
     }}
     
     .navbar-brand {{
         display: flex;
         align-items: center;
-        gap: clamp(0.5rem, 1vw, 0.8rem);
+        gap: clamp(0.6rem, 1vw, 1rem);
         color: white;
-        font-size: clamp(1rem, 3vw, 1.3rem);
-        font-weight: 700;
+        font-size: clamp(1.1rem, 3vw, 1.5rem);
+        font-weight: 800;
         text-decoration: none;
         margin-right: auto;
         white-space: nowrap;
         min-width: fit-content;
+        letter-spacing: -0.5px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }}
+    
+    .navbar-brand:hover {{
+        transform: scale(1.05);
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }}
     
     .navbar-menu {{
         display: flex;
-        gap: clamp(0.3rem, 1vw, 0.5rem);
+        gap: clamp(0.4rem, 1vw, 0.8rem);
         align-items: center;
         list-style: none;
         margin: 0;
@@ -63,67 +74,141 @@ def render_navbar():
     
     .navbar-item {{
         text-align: center;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         flex-shrink: 0;
     }}
     
     .navbar-link {{
         color: white;
         text-decoration: none;
-        padding: clamp(0.6rem, 1.5vw, 0.75rem) clamp(0.6rem, 1.5vw, 1rem);
+        padding: clamp(0.65rem, 1.5vw, 0.85rem) clamp(0.75rem, 1.5vw, 1.2rem);
         display: block;
-        font-size: clamp(0.7rem, 2vw, 0.9rem);
-        font-weight: 500;
-        transition: all 0.3s ease;
+        font-size: clamp(0.8rem, 2vw, 0.95rem);
+        font-weight: 600;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
-        border-radius: 6px;
+        border-radius: 8px;
         cursor: pointer;
         white-space: nowrap;
+        overflow: hidden;
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }}
+    
+    .navbar-link::before {{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+    }}
+    
+    .navbar-link::after {{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }}
     
     .navbar-link:hover {{
-        background-color: rgba(255, 255, 255, 0.2);
-        transform: translateY(-1px);
+        background-color: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }}
+    
+    .navbar-link:hover::before {{
+        left: 100%;
+    }}
+    
+    .navbar-link:hover::after {{
+        width: 100%;
+    }}
+    
+    .navbar-link:active {{
+        transform: translateY(-1px) scale(0.98);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }}
     
     .navbar-link.active {{
-        background-color: rgba(255, 255, 255, 0.3);
-        border-bottom: 2px solid white;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        border-bottom: 3px solid white;
+        font-weight: 700;
+        transform: translateY(-2px);
+    }}
+    
+    /* Ripple effect on click */
+    .navbar-link {{
+        --ripple-x: 0;
+        --ripple-y: 0;
+    }}
+    
+    @keyframes ripple {{
+        0% {{
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+        }}
+        70% {{
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+        }}
+        100% {{
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        }}
+    }}
+    
+    .navbar-link:active {{
+        animation: ripple 0.6s ease-out;
     }}
     
     @media (max-width: 768px) {{
         .navbar-container {{
-            padding: 10px clamp(0.8rem, 3vw, 1.2rem);
-            gap: clamp(0.3rem, 1vw, 0.5rem);
+            padding: 12px clamp(0.8rem, 3vw, 1.5rem);
+            gap: clamp(0.4rem, 1vw, 0.6rem);
         }}
         
         .navbar-brand {{
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            gap: 0.4rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            gap: 0.5rem;
         }}
         
         .navbar-link {{
-            padding: clamp(0.5rem, 1vw, 0.6rem) clamp(0.4rem, 1vw, 0.8rem);
-            font-size: clamp(0.65rem, 1.5vw, 0.8rem);
-            border-radius: 4px;
+            padding: clamp(0.55rem, 1vw, 0.7rem) clamp(0.5rem, 1vw, 0.9rem);
+            font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+            border-radius: 6px;
+        }}
+        
+        .navbar-link:hover {{
+            transform: translateY(-2px) scale(1.01);
         }}
     }}
     
     @media (max-width: 480px) {{
         .navbar-container {{
-            padding: 8px clamp(0.6rem, 2vw, 1rem);
-            gap: 0.2rem;
-        }}
-        
-        .navbar-brand {{
-            font-size: clamp(0.8rem, 2vw, 0.95rem);
+            padding: 10px clamp(0.6rem, 2vw, 1rem);
             gap: 0.3rem;
         }}
         
+        .navbar-brand {{
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            gap: 0.4rem;
+        }}
+        
         .navbar-link {{
-            padding: clamp(0.45rem, 0.8vw, 0.55rem) clamp(0.35rem, 0.8vw, 0.6rem);
-            font-size: clamp(0.6rem, 1.2vw, 0.7rem);
-            border-radius: 3px;
+            padding: clamp(0.5rem, 0.8vw, 0.6rem) clamp(0.4rem, 0.8vw, 0.7rem);
+            font-size: clamp(0.65rem, 1.2vw, 0.75rem);
+            border-radius: 5px;
+        }}
+        
+        .navbar-link:hover {{
+            transform: translateY(-2px) scale(1.01);
         }}
     }}
     </style>
